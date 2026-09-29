@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Une petite question </title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #f7eadf, #f6d9df);
+      color: #5d4148;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 520px;
+      background: rgba(255, 250, 247, 0.95);
+      border-radius: 24px;
+      padding: 35px 25px;
+      text-align: center;
+      box-shadow: 0 12px 35px rgba(100, 60, 70, 0.15);
+    }
+
+    .heart {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: 30px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 25px;
+    }
+
+    button {
+      border: none;
+      border-radius: 14px;
+      padding: 13px 28px;
+      font-size: 17px;
+      cursor: pointer;
+      transition: transform 0.15s, opacity 0.15s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      opacity: 0.9;
+    }
+
+    .yes {
+      background: #d98298;
+      color: white;
+    }
+
+    .no {
+      background: #ead7d7;
+      color: #684b52;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .choice {
+      display: block;
+      margin: 12px 0;
+      padding: 14px;
+      background: #f7e8e5;
+      border-radius: 12px;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .choice input {
+      margin-right: 10px;
+    }
+
+    .send {
+      width: 100%;
+      margin-top: 20px;
+      background: #b96880;
+      color: white;
+    }
+
+    #message {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    .final-message {
+      margin-top: 25px;
+      padding: 20px;
+      background: #f7e8e5;
+      border-radius: 14px;
+      text-align: left;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+
+    .decoder-link {
+      margin-top: 25px;
+      padding: 18px;
+      background: #f7e8e5;
+      border-radius: 14px;
+    }
+
+    .decoder-link a {
+      display: inline-block;
+      margin: 5px 0;
+      color: #8d4f63;
+      font-weight: bold;
+    }
+
+    .decoder-note {
+      font-size: 14px;
+      margin: 8px 0 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="card">
+    <div class="heart"></div>
+
+    <section id="question">
+      <h1>Tu veux sortir avec moi ?</h1>
+      <p>J'ai une petite question à te poser...</p>
+
+      <div class="buttons">
+        <button class="yes" onclick="showYes()">Oui </button>
+        <button class="no" onclick="showNo()">Non</button>
+      </div>
+    </section>
+
+    <section id="yesSection" class="hidden">
+      <h1>Parfait </h1>
+      <p>À quelle heure tu veux qu'on se voie ?</p>
+
+      <label class="choice">
+        <input type="radio" name="heure" value="10h">
+        10h
+      </label>
+
+      <label class="choice">
+        <input type="radio" name="heure" value="14h">
+        14h
+      </label>
+
+      <button class="send" onclick="sendResponse()">
+        Envoyer ma réponse 
+      </button>
+    </section>
+
+    <section id="noSection" class="hidden">
+      <h1>D'accord </h1>
+      <p>Merci quand même d'avoir répondu.</p>
+    </section>
+
+    <div id="finalMessage" class="hidden final-message">
+      <p>Gb q'xfjb pbp qlrq pb nrb gxf x qb afob abmrfp ix obkqob gb q'xf srb gxf mxp mr mbkpbo x xrqob zelpb nrb qlf gb kb pxsxfp mxp pf gb bqxfp qlk pqvib gb slrixfp obzrmbobw qlk pkxm jxfp ix pbri jxkfbo pbp ab abjbkabo x kxbi yfbk bsfaxjbkq kxbi ixroxf afq x qlrq ib jlkab gb kb xroxf mxp obrppf pf gb xroxf cxfq ab jxkkfbo zixpfz qr kxroxf mxp afq lrf gxf mobcbob qb cxfob rk pfqb xsbz rk jbppxdb nrb qr ifp bk zbpxo pbp qlrq pb nrb gxsxfp x qb afob</p>
+    </div>
+
+    
+    <div class="decoder-link">
+      <p>Tu veux décoder un message César ?</p>
+      <a href="https://www.dcode.fr/chiffre-cesar" target="_blank" rel="noopener noreferrer">
+        Ouvrir le décodeur César
+      </a>
+      <p class="decoder-note">Gb q'xfjb pbp qlrq pb nrb gxf x qb afob abmrfp ix obkqob gb q'xf srb gxf mxp mr mbkpbo x xrqob zelpb nrb qlf gb kb pxsxfp mxp pf gb bqxfp qlk pqvib gb slrixfp obzrmbobw qlk pkxm jxfp ix pbri jxkfbo pbp ab abjbkabo x kxbi yfbk bsfaxjbkq kxbi ixroxf afq x qlrq ib jlkab gb kb xroxf mxp obrppf pf gb xroxf cxfq ab jxkkfbo zixpfz qr kxroxf mxp afq lrf gxf mobcbob qb cxfob rk pfqb xsbz rk jbppxdb nrb qr ifp bk zbpxo pbp qlrq pb nrb gxsxfp x qb afob.</p>
+    </div>
+
+    <p id="message"></p>
+  </main>
+
+  <script>
+    /*
+      IMPORTANT :
+      Pour recevoir les réponses, remplace l'adresse ci-dessous
+      par ton adresse e-mail.
+
+      Exemple :
+      https://formsubmit.co/mrlama.la.6t@email.com
+    */
+    const FORM_ENDPOINT = "https://formsubmit.co/Mrlama.la.6t@gmail.com";
+
+    function showYes() {
+      document.getElementById("question").classList.add("hidden");
+      document.getElementById("yesSection").classList.remove("hidden");
+    }
+
+    function showNo() {
+      document.getElementById("question").classList.add("hidden");
+      document.getElementById("noSection").classList.remove("hidden");
+
+      sendSimpleResponse("Non");
+    }
+
+    async function sendSimpleResponse(response) {
+      if (FORM_ENDPOINT.includes("TON_EMAIL_ICI")) return;
+
+      const data = new URLSearchParams();
+      data.append("reponse", response);
+      data.append("_subject", "Réponse à ton site ");
+
+      try {
+        await fetch(FORM_ENDPOINT, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          body: data
+        });
+      } catch (error) {
+        console.log("La réponse n'a pas pu être envoyée.");
+      }
+    }
+
+    async function sendResponse() {
+      const selected = document.querySelector('input[name="heure"]:checked');
+      const message = document.getElementById("message");
+
+      if (!selected) {
+        message.textContent = "Choisis une heure ";
+        return;
+      }
+
+      if (FORM_ENDPOINT.includes("TON_EMAIL_ICI")) {
+        message.textContent =
+          "Le site fonctionne ! Il faut encore configurer l'adresse qui recevra la réponse.";
+        return;
+      }
+
+      const data = new URLSearchParams();
+      data.append("reponse", "Oui");
+      data.append("heure", selected.value);
+      data.append("_subject", "Nouvelle réponse ");
+
+      try {
+        const response = await fetch(FORM_ENDPOINT, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          body: data
+        });
+
+        if (response.ok) {
+          message.textContent =
+            "C'est envoyé.";
+
+          document.getElementById("finalMessage").classList.remove("hidden");
+        } else {
+          message.textContent =
+            "Une erreur est survenue. Réessaie.";
+        }
+      } catch (error) {
+        message.textContent =
+          "Une erreur est survenue. Réessaie.";
+      }
+    }
+  </script>
+
+</body>
+</html>
